@@ -1,0 +1,336 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated to warm black and bronze palette */
+  --background: #0b0b0d; /* warm black */
+  --foreground: #eceff4; /* main text */
+  --card: #121216; /* panels */
+  --card-foreground: #eceff4;
+  --popover: #121216;
+  --popover-foreground: #eceff4;
+  --primary: #eceff4; /* main text */
+  --primary-foreground: #0b0b0d; /* warm black */
+  --secondary: #1b2330; /* slate for badges */
+  --secondary-foreground: #eceff4;
+  --muted: #262833; /* subtle borders */
+  --muted-foreground: #a5afbd; /* secondary text */
+  --accent: #c8a46d; /* soft bronze */
+  --accent-foreground: #ffffff; /* pure white for contrast */
+  --accent-2: #8f6b3a; /* dark bronze for hover */
+  --teal: #2aa39a; /* cold contrast for chips/links */
+  --slate: #1b2330; /* chip/badge backgrounds */
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+  --border: #262833; /* subtle borders */
+  --input: #262833;
+  --ring: #c8a46d; /* soft bronze ring */
+  --chart-1: #c8a46d;
+  --chart-2: #2aa39a;
+  --chart-3: #8f6b3a;
+  --chart-4: #a5afbd;
+  --chart-5: #262833;
+  --radius: 0.625rem;
+  --sidebar: #121216; /* panels */
+  --sidebar-foreground: #eceff4;
+  --sidebar-primary: #c8a46d; /* soft bronze */
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1b2330;
+  --sidebar-accent-foreground: #eceff4;
+  --sidebar-border: #262833;
+  --sidebar-ring: #c8a46d;
+  --nav-h: 72px; /* height of navigation bar */
+}
+
+.dark {
+  /* Dark mode uses same palette with slight adjustments */
+  --background: #0b0b0d;
+  --foreground: #eceff4;
+  --card: #121216;
+  --card-foreground: #eceff4;
+  --popover: #121216;
+  --popover-foreground: #eceff4;
+  --primary: #eceff4;
+  --primary-foreground: #0b0b0d;
+  --secondary: #1b2330;
+  --secondary-foreground: #eceff4;
+  --muted: #262833;
+  --muted-foreground: #a5afbd;
+  --accent: #c8a46d;
+  --accent-foreground: #ffffff;
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: #262833;
+  --input: #262833;
+  --ring: #c8a46d;
+  --chart-1: #c8a46d;
+  --chart-2: #2aa39a;
+  --chart-3: #8f6b3a;
+  --chart-4: #a5afbd;
+  --chart-5: #262833;
+  --sidebar: #121216;
+  --sidebar-foreground: #eceff4;
+  --sidebar-primary: #c8a46d;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1b2330;
+  --sidebar-accent-foreground: #eceff4;
+  --sidebar-border: #262833;
+  --sidebar-ring: #c8a46d;
+  --nav-h: 72px; /* height of navigation bar */
+}
+
+@theme inline {
+  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Added custom color variables for teal and accent-2 */
+  --color-teal: var(--teal);
+  --color-accent-2: var(--accent-2);
+  --color-slate: var(--slate);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  /* Adding smooth scroll only at HTML level */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Added two-panels section styles for single-scroll behavior */
+  .two-panels {
+    scroll-snap-type: y proximity;
+    scroll-margin-top: var(--nav-h, 72px);
+    /* Ensure no transform/filter that would break sticky positioning */
+    transform: none;
+    filter: none;
+  }
+
+  /* Added container grid layout for two-panel structure */
+  .two-panels .container {
+    display: grid;
+    grid-template-columns: 380px minmax(0, 1fr);
+    gap: 24px;
+    max-width: 1400px;
+    margin-inline: auto;
+    padding-inline: 24px;
+    /* Key: overflow visible to allow sticky positioning */
+    overflow: visible;
+    /* Ensure no transform/filter */
+    transform: none;
+    filter: none;
+  }
+
+  /* Updated left rail sticky layout with nav height variable and clamped sizing */
+  .left-rail {
+    position: sticky;
+    top: var(--nav-h, 72px);
+    height: calc(100dvh - var(--nav-h, 72px));
+    /* Removed width and flex-shrink (now controlled by grid) */
+    /* Removed padding (now in JSX or can be added back if needed) */
+    padding: 2rem 2rem 1.5rem 2rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    /* Ensure no transform/filter */
+    transform: none;
+    filter: none;
+  }
+
+  /* Profile photo with dark gradient background and rim light effect */
+  .profile {
+    position: relative;
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: clamp(160px, 18vw, 220px);
+    aspect-ratio: 4 / 5;
+    border-radius: 20px;
+    overflow: hidden;
+    /* Removed visible borders and gradient background to blend with black */
+    background: transparent;
+  }
+
+  /* Rim light effect to integrate photo with black background */
+  .profile::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    /* Subtle vignette to blend edges with black background */
+    background: radial-gradient(ellipse 100% 90% at 50% 40%, transparent 50%, rgba(0, 0, 0, 0.6) 100%);
+  }
+
+  /* Image with color correction filters */
+  .profile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 35%;
+    display: block;
+    /* Adjusted filters for natural skin tones with black background */
+    filter: contrast(1.08) saturate(0.95) brightness(1.02);
+  }
+
+  /* Header - fixed, doesn't scroll */
+  .left-rail__header {
+    flex: 0 0 auto;
+  }
+
+  /* Body - no scrollbar, content fits with line-clamp */
+  .left-rail__body {
+    flex: 1 1 auto;
+    overflow: visible;
+  }
+
+  /* Footer - fixed at bottom, doesn't scroll */
+  .left-rail__footer {
+    flex: 0 0 auto;
+  }
+
+  /* Showcase and slide styles for projects section */
+  .showcase {
+    /* Removed fixed height - now auto to allow document scroll */
+    height: auto;
+    /* Removed scroll-snap-type - now on .two-panels */
+    /* Removed overflow-y: auto - now overflow: visible */
+    overflow: visible;
+    scrollbar-gutter: stable;
+    /* Ensure showcase inherits black background */
+    background: #0b0b0d;
+    /* Removed overscroll-behavior (not needed without internal scroll) */
+    /* Removed transition (not needed without JS control) */
+  }
+
+  .slide {
+    scroll-snap-align: start;
+    /* Changed from min-height: 100% to calc for proper snap alignment */
+    min-height: calc(100dvh - var(--nav-h, 72px));
+    display: flex;
+    flex-direction: column;
+    /* Changed justify-content to flex-start for better layout */
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-radius: 24px;
+    /* Removed blue gradient, using transparent to inherit black */
+    background: transparent;
+    /* Neutral border instead of blue-tinted */
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    /* Explicitly remove any border-image or box-shadow */
+    border-image: initial;
+    box-shadow: none;
+    background-clip: padding-box;
+    position: relative;
+    padding: 28px;
+    gap: 16px;
+  }
+
+  .media-placeholder {
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    /* Neutral gray background instead of blue-tinted gradient */
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px dashed rgba(255, 255, 255, 0.16);
+  }
+
+  /* Focus ring only on focus-visible, using periwinkle */
+  .slide:focus-visible,
+  .slide a:focus-visible,
+  .btn-primary:focus-visible {
+    outline: 2px solid #c8d7ff;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px rgba(200, 215, 255, 0.2);
+  }
+
+  /* Responsive: disable sticky on mobile/tablet */
+  @media (max-width: 1024px) {
+    /* Updated responsive grid to single column */
+    .two-panels .container {
+      grid-template-columns: 1fr;
+      /* Reduced horizontal padding on mobile */
+      padding-inline: 16px;
+    }
+
+    .left-rail {
+      position: static;
+      top: auto;
+      height: auto;
+      width: 100%;
+      /* Reduced padding on mobile */
+      padding: 1.5rem 1rem 1rem 1rem;
+      border-right: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    /* Square aspect ratio on mobile */
+    .profile {
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      max-width: 100%;
+      /* Smaller max width on mobile */
+      max-width: 200px;
+    }
+    /* Disable scroll-snap on mobile for .two-panels */
+    .two-panels {
+      scroll-snap-type: none;
+    }
+    .slide {
+      min-height: auto;
+      margin-bottom: 2rem;
+      /* Reduced padding on mobile for better space usage */
+      padding: 20px;
+      border-radius: 16px;
+      /* Reduced gap between elements on mobile */
+      gap: 12px;
+    }
+
+    /* Adjust text content spacing on mobile */
+    .slide .text-content {
+      gap: 12px;
+    }
+
+    /* Reduce kicker gap on mobile */
+    .slide .kicker {
+      gap: 8px;
+    }
+  }
+}

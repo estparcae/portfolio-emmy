@@ -4,8 +4,60 @@ import { notFound } from "next/navigation"
 const projects = [
   {
     number: "01",
+    productType: "AI Interview Platform · Career Development Tool",
+    title: "3rd place Hackathon Winner: MockLab",
+    slug: "mocklab",
+    badges: ["Cursor", "Figma", "3rd Place Winner"],
+    desc: "AI-powered interview platform helping LATAM developers unlock 2-4x higher salaries by mastering their interview skills. Winner of 3rd place at the AI Voice & Message Hackathon 2025 by Makers Fellowship and Supabase.",
+    context:
+      "LATAM developers often face significant barriers in accessing high-paying international tech roles, not due to lack of technical skills, but because of interview preparation gaps and limited access to realistic practice environments. The platform was built during the AI Voice & Message Hackathon 2025.",
+    problem: [
+      "Limited access to realistic interview practice for LATAM developers targeting international roles",
+      "High cost of interview coaching services (often $100+ per session)",
+      "Lack of immediate, constructive feedback on communication and technical presentation",
+      "Time zone barriers preventing practice with native English speakers",
+    ],
+    approach:
+      "Designed and prototyped an AI-powered interview platform using Figma for UX/UI design and Cursor with MCP tools for rapid development. Integrated an AI voice agent capable of conducting structured technical interviews, providing real-time feedback on both technical answers and communication skills. Focused on creating an accessible, scalable solution for developers across Latin America.",
+    outcomes: [
+      "Won 3rd place at the AI Voice & Message Hackathon 2025 by Makers Fellowship and Supabase",
+      "Created a functional prototype demonstrating AI-driven interview simulations",
+      "Validated concept with positive feedback from LATAM developer community",
+      "Established foundation for helping developers unlock 2-4x higher salary opportunities",
+    ],
+    learnings:
+      "The hackathon experience reinforced that effective interview preparation isn't just about technical knowledge—it's about building confidence through realistic practice. The AI voice agent's ability to provide immediate, judgment-free feedback proved to be a game-changer for anxious interviewees.",
+  },
+  {
+    number: "02",
+    productType: "Field Data Capture · Forms System",
+    title: "Heritage Appraisal System",
+    slug: "ficha-de-avaluos",
+    badges: ["no-code"],
+    desc: "Digital appraisal form that replaces paper capture and standardizes entries. Designed for quick onboarding and consistent datasets across projects.",
+    context:
+      "Heritage appraisal teams were using paper forms in the field, leading to data entry errors, inconsistent formatting, and delays in processing. The organization needed a digital solution that worked offline and required minimal training for cultural heritage valuation.",
+    problem: [
+      "Paper forms prone to illegible handwriting and missing required fields",
+      "Manual data entry from paper to spreadsheets introduced errors and delays",
+      "No standardization across different appraisal teams",
+      "Difficult to track form completion status or generate reports for heritage assets",
+    ],
+    approach:
+      "Designed a mobile-friendly digital form with conditional logic, required field validation, and offline capability. Focused on intuitive UX to minimize training time. Implemented automated data validation and export to standardized formats for heritage appraisal workflows.",
+    outcomes: [
+      "Eliminated manual transcription errors and reduced processing time by 60%",
+      "Achieved 95% data completeness with required field validation",
+      "Reduced onboarding time for new appraisers from 2 days to 2 hours",
+      "Enabled real-time progress tracking and automated report generation",
+    ],
+    learnings:
+      "The key to adoption was making the digital form faster than paper, not just more accurate. By optimizing for speed and adding smart defaults, we made the tool indispensable rather than just compliant.",
+  },
+  {
+    number: "03",
     productType: "Inventory Data Portal · Internal Tool (Prototype)",
-    title: "Sistema de Consulta de Bienes Arqueológicos — ICANH",
+    title: "Archaeological Inventory System — SIARQ",
     slug: "sistema-consulta-bienes-arqueologicos",
     badges: ["no-code"],
     desc: "Prototype of a consultation portal for archaeological inventory: advanced filters, multi-view browsing and safe photo–record association to explore data beyond spreadsheets.",
@@ -27,58 +79,6 @@ const projects = [
     ],
     learnings:
       "Working closely with domain experts revealed that the most valuable feature wasn't advanced search—it was the ability to visually browse and make connections between artifacts. This insight shaped the entire interface design.",
-  },
-  {
-    number: "02",
-    productType: "Field Data Capture · Forms System",
-    title: "Ficha de Avalúos",
-    slug: "ficha-de-avaluos",
-    badges: ["no-code"],
-    desc: "Digital appraisal form that replaces paper capture and standardizes entries. Designed for quick onboarding and consistent datasets across projects.",
-    context:
-      "Property appraisal teams were using paper forms in the field, leading to data entry errors, inconsistent formatting, and delays in processing. The organization needed a digital solution that worked offline and required minimal training.",
-    problem: [
-      "Paper forms prone to illegible handwriting and missing required fields",
-      "Manual data entry from paper to spreadsheets introduced errors and delays",
-      "No standardization across different appraisal teams",
-      "Difficult to track form completion status or generate reports",
-    ],
-    approach:
-      "Designed a mobile-friendly digital form with conditional logic, required field validation, and offline capability. Focused on intuitive UX to minimize training time. Implemented automated data validation and export to standardized formats.",
-    outcomes: [
-      "Eliminated manual transcription errors and reduced processing time by 60%",
-      "Achieved 95% data completeness with required field validation",
-      "Reduced onboarding time for new appraisers from 2 days to 2 hours",
-      "Enabled real-time progress tracking and automated report generation",
-    ],
-    learnings:
-      "The key to adoption was making the digital form faster than paper, not just more accurate. By optimizing for speed and adding smart defaults, we made the tool indispensable rather than just compliant.",
-  },
-  {
-    number: "03",
-    productType: "Workflow Automation · Scheduling & Notifications",
-    title: "Automatización Forms + Calendar + Gmail",
-    slug: "automation-forms-calendar-gmail",
-    badges: ["no-code"],
-    desc: "Approval and scheduling flow connecting Forms → Calendar → Gmail to create events, route approvals and send automated notifications.",
-    context:
-      "A team was manually processing meeting requests from a Google Form, checking availability, creating calendar events, and sending confirmation emails. This process took 15-20 minutes per request and was prone to scheduling conflicts.",
-    problem: [
-      "Manual processing of 50+ meeting requests per week consumed significant staff time",
-      "Frequent scheduling conflicts due to lack of real-time calendar integration",
-      "Inconsistent email notifications and missing confirmations",
-      "No audit trail or approval workflow for sensitive meetings",
-    ],
-    approach:
-      "Built an automated workflow using Google Apps Script to connect Forms, Calendar, and Gmail. Implemented approval routing for specific meeting types, automatic conflict detection, and templated email notifications with calendar invites.",
-    outcomes: [
-      "Reduced processing time from 15 minutes to 30 seconds per request (97% reduction)",
-      "Eliminated scheduling conflicts with real-time calendar availability checks",
-      "Achieved 100% notification delivery with automated follow-ups",
-      "Created complete audit trail for compliance and reporting",
-    ],
-    learnings:
-      "Small automations can have outsized impact. By eliminating a repetitive 15-minute task, we freed up 12+ hours per week for higher-value work. The key was starting with a well-defined, high-frequency process.",
   },
 ]
 

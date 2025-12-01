@@ -7,30 +7,44 @@ import { Mail, Linkedin, MapPin, Phone, Download } from "lucide-react"
 import Link from "next/link"
 import { useRef } from "react"
 
-const projects = [
+interface Project {
+  number: string
+  productType: string
+  title: string
+  slug: string
+  badges: string[]
+  desc: string
+  image?: string
+  video?: string
+}
+
+const projects: Project[] = [
   {
     number: "01",
-    productType: "Inventory Data Portal · Internal Tool (Prototype)",
-    title: "Sistema de Consulta de Bienes Arqueológicos — ICANH",
-    slug: "sistema-consulta-bienes-arqueologicos",
-    badges: ["no-code"],
-    desc: "Prototype of a consultation portal for archaeological inventory: advanced filters, multi-view browsing and safe photo–record association to explore data beyond spreadsheets.",
+    productType: "AI Interview Platform · Career Development Tool",
+    title: "3rd place Hackathon Winner: MockLab",
+    slug: "mocklab",
+    badges: ["Cursor", "Figma", "3rd Place Winner"],
+    desc: "AI-powered interview platform helping LATAM developers unlock 2-4x higher salaries by mastering their interview skills. Winner of 3rd place at the AI Voice & Message Hackathon 2025 by Makers Fellowship and Supabase.",
+    video: "/MockLab.mp4",
   },
   {
     number: "02",
     productType: "Field Data Capture · Forms System",
-    title: "Ficha de Avalúos",
+    title: "Heritage Appraisal System",
     slug: "ficha-de-avaluos",
     badges: ["no-code"],
     desc: "Digital appraisal form that replaces paper capture and standardizes entries. Designed for quick onboarding and consistent datasets across projects.",
+    image: "/images/ficha-avaluo.png",
   },
   {
     number: "03",
-    productType: "Workflow Automation · Scheduling & Notifications",
-    title: "Automatización Forms + Calendar + Gmail",
-    slug: "automation-forms-calendar-gmail",
+    productType: "Inventory Data Portal · Internal Tool (Prototype)",
+    title: "Archaeological Inventory System — SIARQ",
+    slug: "sistema-consulta-bienes-arqueologicos",
     badges: ["no-code"],
-    desc: "Approval and scheduling flow connecting Forms → Calendar → Gmail to create events, route approvals and send automated notifications.",
+    desc: "Prototype of a consultation portal for archaeological inventory: advanced filters, multi-view browsing and safe photo–record association to explore data beyond spreadsheets.",
+    image: "/images/sibac.png",
   },
 ]
 
@@ -113,7 +127,7 @@ export function TwoPanelLayout() {
               <div className="border-t border-white/10 pt-3">
                 <div className="space-y-2">
                   <a
-                    href="mailto:emmyarias@gmail.com"
+                    href="mailto:emmypardo13@gmail.com"
                     className="flex items-center gap-2 text-xs text-white/70 hover:text-white transition-colors"
                   >
                     <Mail className="h-3.5 w-3.5 text-white/40" />
@@ -165,7 +179,7 @@ export function TwoPanelLayout() {
                   <h2 className="text-xl md:text-2xl lg:text-4xl font-bold text-foreground text-balance leading-tight">
                     {project.title}
                   </h2>
-                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-2xl text-pretty">
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed text-pretty">
                     {project.desc}
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -180,13 +194,35 @@ export function TwoPanelLayout() {
                   </div>
                 </div>
 
-                <div className="flex-1 flex min-h-[200px] items-center justify-center mx-0 md:mx-52 opacity-100">
-                  <span
-                    className="text-3xl md:text-5xl font-bold text-white/10 leading-none uppercase tracking-tight pointer-events-none select-none"
-                    aria-label="Coming soon"
-                  >
-                    Coming soon
-                  </span>
+                <div className="flex-1 flex min-h-[200px] items-center justify-center opacity-100 px-4 py-8">
+                  {project.video ? (
+                    <video
+                      src={project.video}
+                      controls
+                      loop
+                      muted
+                      autoPlay
+                      playsInline
+                      className="w-full h-auto rounded-lg shadow-2xl"
+                    >
+                      Tu navegador no soporta videos HTML5.
+                    </video>
+                  ) : project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-auto rounded-lg shadow-2xl"
+                    />
+                  ) : (
+                    <span
+                      className="text-3xl md:text-5xl font-bold text-white/10 leading-none uppercase tracking-tight pointer-events-none select-none"
+                      aria-label="Coming soon"
+                    >
+                      Coming soon
+                    </span>
+                  )}
                 </div>
 
                 <Link

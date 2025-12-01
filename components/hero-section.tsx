@@ -37,7 +37,7 @@ export function HeroSection() {
   const translateY = scrollProgress * -50
 
   return (
-    <section className="relative h-screen flex items-center justify-start overflow-hidden">
+    <section className="relative h-screen flex items-center justify-start overflow-hidden bg-[#0b0b0d]">
       <div
         className="absolute inset-0 transition-all duration-100"
         style={{
@@ -49,18 +49,18 @@ export function HeroSection() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img src="/ceramic-artifact-hero.png" alt="Ancient ceramic artifact" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.12_0.02_40)]/95 via-[oklch(0.12_0.02_40)]/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.12_0.02_40)] via-[oklch(0.12_0.02_40)]/95 to-[oklch(0.12_0.02_40)]/80 md:from-[oklch(0.12_0.02_40)]/95 md:via-[oklch(0.12_0.02_40)]/70 md:to-transparent" />
         </div>
 
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 h-full flex items-center">
           <div className="max-w-2xl">
             <div className="mb-6 md:mb-8">
-              <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black leading-none tracking-tight text-balance text-foreground">
-                PRODUCT BUILDER
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-none tracking-tight whitespace-nowrap text-foreground">
+                AI PRODUCT BUILDER
               </h1>
               <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black leading-none tracking-tight text-foreground mt-2">
-                & ARCHAEOLOGIST
+                & ANTHROPOLOGIST
               </p>
             </div>
 
@@ -80,7 +80,7 @@ export function HeroSection() {
               </a>
             </Button>
 
-            <p className="text-xs text-muted-foreground mt-8">Designing · Automation · Data quality</p>
+            <p className="text-xs text-muted-foreground mt-8">Automatization · Design · AI</p>
           </div>
         </div>
 
@@ -92,7 +92,7 @@ export function HeroSection() {
         </div>
 
         {/* Vertical Text */}
-        <div className="absolute left-6 bottom-12 z-10">
+        <div className="absolute left-6 bottom-12 z-10 hidden md:block">
           <p className="text-xs tracking-widest [writing-mode:vertical-lr] rotate-180 text-muted-foreground">
             SCROLL DOWN
           </p>
